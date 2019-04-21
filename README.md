@@ -18,6 +18,7 @@ Let us consider a simple linear regression,
   * We can find the line/plane that fits the real values data of form **y_i = W.T\*x_i + B** for given **x_i**. Here **B** is for bias. 
   * Then we've **Sum of Squared Error** = **sum(y_i - (W.T\*x_i + B))^2** ; **i : 1 -> n**.
   * The optimal weight vector will be **W\* = argmin(W) sum(y_i - (W.T\*x_i + B))^2** i.e the one which gives minimum sum of squared errors.
+
 ![Gradient Descent](./Images/Graph.png)
 
 We can write the optimization problem **W\* = argmin(W) sum(y_i - (W.T\*x_i + B))^2** as,
