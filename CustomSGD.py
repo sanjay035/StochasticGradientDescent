@@ -31,7 +31,7 @@ class CustomSGDLinearRegressor:
         r = self.r
         
         for _ in range(self.iters - 1):
-            opt_weights = opt_weights + ( r * 2 * self.selectKPointsforWeights( opt_weights ) ) / self.X.shape[0]
+            opt_weights = opt_weights + ( r * 2 * self.selectKPointsforWeights( opt_weights ) ) / self.k
             
             r /= 2
         
@@ -49,7 +49,7 @@ class CustomSGDLinearRegressor:
         r = self.r
         
         for _ in range(self.iters - 1):
-            opt_b = opt_b + ( r * 2 * self.selectKPointsforBias( opt_b ) ) / self.X.shape[0]
+            opt_b = opt_b + ( r * 2 * self.selectKPointsforBias( opt_b ) ) / self.k
                 
             r /= 2
         
