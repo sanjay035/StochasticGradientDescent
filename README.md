@@ -6,8 +6,9 @@ A custom implementation of Stochastic Gradient Descent for Linear Regression tha
 
 Gradient Descent is an iterative optimization algorithm that can be used to converge to an optimal value easily with the use of modern computaional power.
   * The update equation for every iteration is, **x(i) = x(i-1) - r \* [df/dx]_x(i-1)** ; **i : 1 -> n**.
-  * It mainly depends on the **learing rate** (or) **step size** denoted by **"r"**.
-  * The **learning rate** tells how fast to converge to the optimal value.
+  * It mainly depends on the **learning rate** (or) **step size** denoted by **"r"**.
+  * The **learning rate** tells how fast to converge to the optimal value. So giving a right value of **"r"** matters.
+  * If the right value of **"r"** ain't given then the updation might jump over optimal value(min) and we'll not be converging at the right solution. Hence need to check with different values of **"r"**.
 
 Let us consider a simple linear regression,
   
@@ -49,7 +50,7 @@ __
   * If **K=1** then it's simple SGD.
   * If **1<K<<n** then it's batch SGD with batch size = K.
   
-Hence, **Stochastic Gradient descent(SGD)** is one of the mot important optimization algorithm in Machine Learning.
+Hence, **Stochastic Gradient descent(SGD)** is one of the most important optimization algorithm in Machine Learning.
 
 # Note:
 Again gradient descent can stuck in local optima if the function to be optimized is a **non-convex**.
