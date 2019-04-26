@@ -17,31 +17,31 @@ Let us consider a simple linear regression,
   ![Gradient Descent](./Images/LR.png)
   * The dataset is **D = <x_i, y_i> ; x_i ∈ R^d ; y_i ∈ R**. Here **d** is for # of dimensions.
   * We can find the line/plane that fits the real values data of form **y_i = W.T\*x_i + B** for given **x_i**. Here **B** is for bias. 
-  * Then we've **Sum of Squared Error** = **sum(y_i - (W.T\*x_i + B))^2** ; **i : 1 -> n**.
-  * The optimal weight vector will be **W\* = argmin(W) sum(y_i - (W.T\*x_i + B))^2** i.e the one which gives minimum sum of squared errors.
+  * Then we've **Mean Squared Error(MSE)** = **sum( [y_i - (W.T\*x_i + B)]^2 ) / n** ; **i : 1 -> n**.
+  * The optimal weight vector will be **W\* = argmin(W) sum( [y_i - (W.T\*x_i + B)]^2 ) / n** i.e the one which gives minimum sum of squared errors.
 
 ![Gradient Descent](./Images/Graph.png)
 
-We can write the optimization problem **W\* = argmin(W) sum(y_i - (W.T\*x_i + B))^2** as,
+We can write the optimization problem **W\* = argmin(W) sum( [y_i - (W.T\*x_i + B)]^2 ) / n** as,
 
-**L(W) = 𝜮(y_i - (W.T\*x_i + B))^2** ; **i : 1 -> n**.
+**L(W) = [ 𝜮(y_i - (W.T\*x_i + B))^2 ] / n** ; **i : 1 -> n**.
 
-Then the vector differentiation or grad of **L(w)** is **𝞩_w L = 𝜮 { 2\*(y_i - (W.T\*x_i + B))(-x_i) }**
+Then the vector differentiation or grad of **L(w)** is **𝞩_w L = 𝜮 { 2\*(y_i - (W.T\*x_i + B))(-x_i) } / n**
 
 # Steps for finding Optimal weight:
 1. Initialize the weight vector **W(0)** with random values.
 2. repeat until **W(k-1)** and **W(k)** doesn't change much:
-    * **W(i) = W(i-1) - r\*𝜮 { (-2\*x_i)\*(y_i - (W(i-1)\*x_i + B)) } ; i : 1 -> n**
+    * **W(i) = W(i-1) - r\*𝜮 { (-2\*x_i)\*(y_i - (W(i-1)\*x_i + B)) } / n ; i : 1 -> n**
 3. Declare **W\* = W(k-1)**
 4. Similarly step 2 & 3 can be followed to get the optimal value of bias **"B"** term where instead of differentiating with respect to **W** we do it with **B**.
     
-But the problem with gradient descent is it takes a lot of time calculating **𝜮 { (-2\*x_i)\*(y_i - (W.T\*x_i + B)) }** for every iteration as **i : 1 -> n**.
+But the problem with gradient descent is it takes a lot of time calculating **𝜮 { (-2\*x_i)\*(y_i - (W.T\*x_i + B)) } / n** for every iteration as **i : 1 -> n**.
 
 To overcome this we can select **K** random points instead of total **n** points at each iteration for the above summation.
 
 This technique of selecting **K** random points at each iteration is known as **Stochastic Gradient Descent**. Stochastic here is for randomization.
   * So here the updation looks like,
-    **SGD : W(i) = W(i-1) - r\*𝜮 { (-2\*x_i)\*(y_i - (W(i-1)\*x_i + B)) }** with **i: 1 -> K**
+    **SGD : W(i) = W(i-1) - r\*𝜮 { (-2\*x_i)\*(y_i - (W(i-1)\*x_i + B)) } / K** with **i: 1 -> K**
 
 It also can be seen that **W\* of GradientDescent** is almost equal to **W\* of Stochastic Gradient descent** but with some increased number of iterations in **Stochastic Gradient descent** for the convergence of optimal value.
 
