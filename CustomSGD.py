@@ -76,7 +76,7 @@ class CustomSGDLinearRegressor:
         for _ in range(self.iters - 1):
             opt_weights = opt_weights + ( r * 2 * self.selectKPointsforWeights( opt_weights ) ) / self.k
             
-            # Reducing the learning rate to avoid oscillation and jumping over optimal soultion.
+            # Reducing the learning rate to avoid oscillation and jump over optimal solution.
             r /= 2
         
         self.w = opt_weights
@@ -115,7 +115,7 @@ class CustomSGDLinearRegressor:
         for _ in range(self.iters - 1):
             opt_b = opt_b + ( r * 2 * self.selectKPointsforBias( opt_b ) ) / self.k
             
-            # Reducing the learning rate to avoid oscillation and jumping over optimal soultion.
+            # Reducing the learning rate to avoid oscillation and jump over optimal solution.
             r /= 2
         
         self.b = opt_b
