@@ -6,11 +6,19 @@ class CustomSGDLinearRegressor:
     A Custom class implementation of Stochastic Gradient Descent for Linear Regression. 
     
     Attributes:
-        learning_rate (float) : The rate of how fast to converge to the solution.
+        w - weights (array(n_features)) : The weights to be learnt using train data points.
         
-        iters (int) : The number of times whole data to be passed for convergence. 
+        b - bias (float) : The bias to be learnt using train data points.
         
-        k_rand_points (int) : The number of random points to be taken for calculating gradient. 
+        X (array(n_samples, n_features)) : The training data points used for finding optimal weights and bias.
+        
+        y (array(n_samples)) : The real values associated with the train data points which are to be predicted.
+        
+        r - learning_rate (float) : The rate of how fast to converge to the solution.
+        
+        k - rand_points (int) : The number of random points to be taken for calculating gradient. 
+        
+        iters (int) : The number of times whole data to be passed for convergence.
     """
     
     def __init__(self, learning_rate, iters, k_rand_points):
