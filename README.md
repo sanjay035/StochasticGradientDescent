@@ -1,4 +1,4 @@
-# StochasticGradientDescent
+# StochasticGradientDescent [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sanjay235/StochasticGradientDescent/master?filepath=SGD_Comparison.ipynb)
 
 A custom implementation of Stochastic Gradient Descent for Linear Regression that optimizes the weights **W(i)** of each component and the bias **b** term.
 
