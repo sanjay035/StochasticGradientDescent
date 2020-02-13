@@ -1,3 +1,4 @@
+name: SGDForRegression
 channels:
   - conda-forge
   - defaults
@@ -9,10 +10,8 @@ dependencies:
   - ipywidgets
   - numpy
   - matplotlib
-  - mpi4py
+  - prettytable
   - networkx
   - pandas
-  - scikit-image
   - scikit-learn
   - seaborn
-  - sympy
