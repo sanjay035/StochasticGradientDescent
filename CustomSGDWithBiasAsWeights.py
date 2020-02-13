@@ -3,21 +3,21 @@ import gc
 
 class CustomSGDLinearRegressor:
     """
-    A Custom class implementation of Stochastic Gradient Descent for Linear Regression. 
+    A custom class implementation of Stochastic Gradient Descent for Linear Regression. 
     
     Attributes:
     
-        w - weights (array(n_features)) : The weights to be learnt using train data points.
+        w (array(n_features)): The weights associated with each feature to be learnt using train data points.
         
-        X (array(n_samples, n_features)) : The training data points used for finding optimal weights and bias.
+        X (array(n_samples, n_features)): The training data points used for finding optimal weights and bias.
         
-        y (array(n_samples)) : The real values associated with the train data points which are to be predicted.
+        y (array(n_samples)): The real values associated with the train data points which are to be predicted.
         
-        learning_rate - learning_rate (float) : The rate of how fast to converge to the solution.
+        learning_rate - learning_rate (float): The amount of gradient to be used to converge to the solution.
         
-        k - rand_points (int) : The number of random points to be taken for calculating gradient. 
+        k - batch_size (int): The # random batch points to be taken for calculating gradient. 
         
-        iters (int) : The number of times whole data to be passed for convergence.
+        epochs - epochs (int): The # times whole data to be passed through the model.
     """
     
     def __init__(self, learning_rate=1e-3, epochs=512, batch_size=64):
@@ -26,11 +26,11 @@ class CustomSGDLinearRegressor:
         
         Parameters:
         
-            learning_rate (float) : The rate of how fast to converge to the solution. 
+            learning_rate (float): The rate of how fast to converge to the solution. 
         
-            epochs (int) : The number of times whole data to be passed for convergence. 
+            epochs (int): The number of times whole data to be passed for convergence. 
         
-            batch_size (int) : The number of random points to be taken for calculating gradient.
+            batch_size (int): The number of random points to be taken for calculating gradient.
         """
         
         # Initializing the attributes of the class.
@@ -47,9 +47,9 @@ class CustomSGDLinearRegressor:
         
         Parameters:
         
-            DTrain (array(n_samples, n_features)) : The data points for fitting the model. 
+            DTrain (array(n_samples, n_features)): The data points for fitting the model. 
         
-            y (array(n_samples)) : The real values to be predicted and for fitting the model.
+            y (array(n_samples)): The real values to be predicted and for fitting the model.
         """
         
         # Preparing the Train data.
@@ -60,7 +60,7 @@ class CustomSGDLinearRegressor:
         
         self.w = np.random.normal(size = self.X.shape[1])
         
-        # Iterating through the data basically number of epochs.
+        # Iterating through the complete data, basically number of epochs.
         for _ in range( self.iters ):
             self.findBestWeights()
         
@@ -97,10 +97,10 @@ class CustomSGDLinearRegressor:
         The method to get the gradient of weights for k random points.
         
         Parameters:
-            weights (array(n_features)) : The weights associated with each feature.
+            weights (array(n_features)): The weights associated with each feature.
         
         Returns:
-            float : The value of gradient at old weight.
+            float: The value of gradient at old weight.
         """
         
         # Generating K random batch indices.
@@ -113,15 +113,15 @@ class CustomSGDLinearRegressor:
         The method used to predict the real value given an unseen data point.
         
         Parameters:
-            DTest (array(n_samples, n_features)) : The data points for the model has to predict real value.
+            DTest (array(n_samples, n_features)): The data points for the model has to predict real value.
         
         Returns:
-            float : The predicted real value using the optimal weights found by SGD.
+            float: The predicted real value using the optimal weights found by SGD.
         """
         
         # Preparing the Test data.        
         DTest = np.array(DTest)
-        DTest = np.hstack(( DTest, np.ones((DTest.shape[0], 1)) ))
+        DTest = np.hstack(( DTest, np.ones(( DTest.shape[0], 1 )) ))
         
         # Predicting the real value for the test data points.
         return np.round((self.w * DTest).sum(axis=1), 1)
