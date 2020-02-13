@@ -1,3 +1,6 @@
+import numpy as np
+import gc
+
 class CustomSGDLinearRegressor:
     """
     A Custom class implementation of Stochastic Gradient Descent for Linear Regression. 
